@@ -14,7 +14,7 @@ body {
 .episode-layout {
   display: flex;
   flex-wrap: wrap;
-  min-width: 100vh;
+  min-width: 96vw;
 }
 
 .episode-box {
@@ -26,4 +26,7 @@ body {
   justify-content: space-between;
   background: #fff;
   border-bottom: 1px solid #000;
+  padding: 0.5rem;
+  position: sticky;
+  top: 0;
 }
