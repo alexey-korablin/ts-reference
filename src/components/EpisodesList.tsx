@@ -1,19 +1,13 @@
 import React from 'react';
 
-import { IEpisode } from '../interfaces';
-
-type TProp = {
-  episodes: IEpisode[];
-  toggleFavAction: any;
-  favourites: IEpisode[];
-};
+import { IEpisode, IEpisodeProps } from '../interfaces';
 
 export default function EpisodesList({
   episodes,
-  toggleFavAction,
   favourites,
-}: TProp): JSX.Element[] {
-  // const episodes: Array<IEpisode>
+  toggleFavAction,
+  dispatch,
+}: IEpisodeProps): JSX.Element[] {
   return episodes.map((episode: IEpisode) => {
     return (
       <div className='episode-box' key={episode.id}>
@@ -28,7 +22,11 @@ export default function EpisodesList({
           <div>
             Season: {episode.season} Number: {episode.number}
           </div>
-          <button onClick={() => toggleFavAction(episode)}>
+          <button
+            onClick={() =>
+              toggleFavAction(dispatch, episode, favourites)
+            }
+          >
             {favourites.find((fav: IEpisode) => fav.id === episode.id)
               ? 'Unfav'
               : 'Fav'}
